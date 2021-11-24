@@ -1,10 +1,10 @@
-import {mongoose} from 'mongoose'
+import {Mongoose,connect} from 'mongoose'
 import {config} from '../config/Constants'
 
 export class MongoConnection{
   public async connect(): Promise<void>{
     try{
-      await mongoose.connect(config.MONGO_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true})
+      await connect(config.MONGO_CONNECTION)
       console.log("Database connected")
     }catch(err){
       console.log(err.message)
